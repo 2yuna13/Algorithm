@@ -1,12 +1,13 @@
+# heap 사용
+from heapq import heappop, heapify, heappush
+
 n, m = map(int, input().split())
-a = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-a.sort()
-
+heapify(arr)
 for _ in range(m):
-    num = a[0] + a[1]
-    a[0] = num
-    a[1] = num
-    a.sort()
-
-print(sum(a))
+    s = heappop(arr) + heappop(arr)
+    heappush(arr, s)
+    heappush(arr, s)
+    
+print(sum(arr))
