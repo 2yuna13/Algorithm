@@ -1,33 +1,20 @@
-# prim
-def prim(n, edges):
-    import heapq
+class DisjointSet:
 
-    graph = [[] for _ in range(n + 1)]
-    for idx, adj, cost in edges:
-        graph[idx].append((cost, adj))
-        graph[adj].append((cost, idx))
+    def __init__(self, n):
+        self.parent = list(range(n + 1))
 
-    visited = [False] * (n + 1)
-    visited[1] = True
-    heap = []
-    for cost, adj in graph[1]:
-        heapq.heappush(heap, (cost, adj))
+    def find(self, x):
+        if self.parent[x] == x:
+            return x
+        self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
 
-    result = 0
-    used_edges = 0
-    while used_edges < n - 1:
-        cost, idx = heapq.heappop(heap)
-        if visited[idx]:
-            continue
-        visited[idx] = True
-        result += cost
-        used_edges += 1
-        for adj_cost, adj in graph[idx]:
-            if not visited[adj]:
-                heapq.heappush(heap, (adj_cost, adj))
-
-    return result
-
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x == root_y:
+            return
+        self.parent[root_x] = root_y
 
 if __name__ == '__main__':
     import sys
@@ -35,4 +22,16 @@ if __name__ == '__main__':
     n = int(input())
     m = int(input())
     edges = [tuple(map(int, input().split())) for _ in range(m)]
-    print(prim(n, edges))
+    edges.sort(key=lambda x: x[2])
+    disjoint_set = DisjointSet(n)
+    result = 0
+    used_edges = 0
+
+    for idx, adj, cost in edges:
+        if disjoint_set.find(idx) != disjoint_set.find(adj):
+            disjoint_set.union(idx, adj)
+            result += cost
+            used_edges += 1
+            if used_edges == n - 1:
+                break
+    print(result)
