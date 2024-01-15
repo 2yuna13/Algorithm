@@ -38,7 +38,7 @@ def find_food(point):
             x, y = can_eat[0]
             space[x][y] = 0
             return x, y, time
-        start = new_start[:]
+        start = new_start
     return None
 
 
