@@ -1,5 +1,4 @@
 import sys
-
 input = sys.stdin.readline
 
 n = int(input())
@@ -7,8 +6,10 @@ time = list(map(int, input().split()))
 time.sort()
 
 ans = 0
+sum_lst = []
 
 for i in range(n):
-    ans += sum(time[:i+1])
+    ans += time[i]
+    sum_lst.append(ans)
 
-print(ans)
+print(sum(sum_lst))
