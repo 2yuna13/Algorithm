@@ -3,10 +3,9 @@ input = sys.stdin.readline
 
 n, m = map(int, input().split())
 trees = list(map(int, input().split()))
-trees.sort()
 
 lo = 0
-hi = trees[-1]
+hi = max(trees)
 
 ans = 0
 # 이진 탐색
@@ -17,15 +16,11 @@ while lo <= hi:
     for i in trees:
         if i > mid:
             cnt += i - mid
-
-
-    if cnt == m:
-        ans = mid
-        break
+                
     # 잘린 나무의 길이가 목표보다 작으면 절단기 설정을 줄임
-    elif cnt < m:
+    if cnt < m:
         hi = mid - 1
-    # 잘린 나무의 길이가 목표보다 크면 높이를 높임
+    # 잘린 나무의 길이가 목표보다 크면 ans 업데이트하고 높이를 높임
     else:
         ans = mid
         lo = mid + 1
