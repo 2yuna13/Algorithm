@@ -2,31 +2,26 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-table = []
+t = [] # 각 상담을 완료하는 데 걸리는 기간
+p = [] # 각 상담을 완료했을 때 받는 금액
+dp = [0] * (n + 1)
+max_value = 0
+
 for _ in range(n):
-    t, p = map(int, input().split())
-    table.append((t, p))
+    x, y = map(int, input().split())
+    t.append(x)
+    p.append(y)
 
-max_val = 0
+# 리스트를 뒤에서부터 거꾸로 확인
+for i in range(n - 1, -1, -1):
+    time = t[i] + i
+    # 상담이 기간 안에 끝나는 경우
+    if time <= n:
+        # 점화식에 맞게, 현재까지의 최고 이익 계산
+        dp[i] = max(p[i] + dp[time], max_value)
+        max_value = dp[i]
+    # 상담이 기간을 벗어나는 경우
+    else:
+        dp[i] = max_value
 
-
-def dp(idx, pay):
-    global max_val
-    if idx >= n:
-        if pay > max_val:
-            max_val = pay
-        return
-
-    t, p = table[idx]
-
-    for i in range(2):
-        if i == 1:
-            if idx + t > n:
-                return
-            dp(idx + t, pay + p)
-        else:
-            dp(idx + 1, pay)
-
-
-dp(0, 0)
-print(max_val)
+print(max_value)
