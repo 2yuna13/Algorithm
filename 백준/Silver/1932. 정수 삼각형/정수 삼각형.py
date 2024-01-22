@@ -1,31 +1,26 @@
 import sys
 input = sys.stdin.readline
 
-INF = int(1e9)
-
-# 입력 받기
 n = int(input())
-tri = []
+dp = []
 for _ in range(n):
-    tri.append(list(map(int, input().split())))
+    dp.append(list(map(int, input().split())))
 
-# 선택된 수의 합 저장
-memo = [[INF] * (i + 1) for i in range(n)]
-memo[0][0] = tri[0][0]
+# 두 번째 줄부터 내려가면서 확인
+for i in range(1, n):
+    for j in range(i + 1):
+        # 왼쪽 위에서 내려오는 경우
+        if j == 0:
+            up_left = 0
+        else:
+            up_left = dp[i - 1][j - 1]
+        # 바로 위에서 내려오는 경우
+        if j == i:
+            up = 0
+        else:
+            up = dp[i - 1][j]
+        # 최대 합 저장
+        dp[i][j] = dp[i][j] + max(up_left, up)
 
 
-def dp(r, c):
-    if not (0 <= r < n and 0 <= c < len(tri[r])):
-        return 0
-
-    if memo[r][c] != INF:
-        return memo[r][c]
-
-    memo[r][c] = tri[r][c] + max(dp(r - 1, c - 1), dp(r - 1, c))
-    return memo[r][c]
-
-
-for col in range(n):
-    dp(n - 1, col)
-
-print(max(memo[n - 1]))
+print(max(dp[n - 1]))
