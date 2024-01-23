@@ -22,7 +22,7 @@ for i in range(0, len(left), m):
 for i in range(len(right)-1, -1, -m):
     cnt.append(abs(right[i]))
 
-max_cnt = max(cnt)
-total_cnt = sum(cnt) * 2 - max_cnt
+cnt.sort()
+total_cnt = sum(cnt) * 2 - cnt[-1]
 
 print(total_cnt)
