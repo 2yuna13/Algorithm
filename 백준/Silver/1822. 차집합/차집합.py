@@ -8,6 +8,5 @@ for i in A:
     if i not in B:
         C.append(i)
 
-C.sort()
 print(len(C))
-print(*C)
+print(*sorted(C))
