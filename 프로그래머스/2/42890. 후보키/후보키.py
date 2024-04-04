@@ -18,10 +18,9 @@ def solution(relation):
     for case in all_case:
         # 조합에 해당하는 열의 값의 집합
         tmp = [tuple(item[idx] for idx in case) for item in relation]
+        # tmp = []
         # for item in relation:
-        #     new_tuple = []
-        #     for idx in case:
-        #         new_tuple.append(item[idx])
+        #     new_tuple = tuple(item[idx] for idx in case)
         #     tmp.append(new_tuple)
         
         # 각 조합의 중복 체크
