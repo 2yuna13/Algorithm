@@ -1,10 +1,6 @@
-n = int(input())
-a = ''
+a = int(input())
 
-if n % 2 == 0:
-    a = 'even'
+if a % 2 == 0:
+    print(a, 'is even')
 else:
-    a = 'odd'
-    
-print(f"{n} is {a}")
-    
+    print(a, 'is odd')
