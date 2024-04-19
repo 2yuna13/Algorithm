@@ -1,2 +1,12 @@
 def solution(myString, pat):
-    return myString.rsplit(pat, 1)[0] + pat
+    answer = ''
+    
+    for i in range(len(myString)):
+        target = myString[i : i+len(pat)]
+        
+        if len(target) != len(pat):
+            break
+        if target == pat:
+            answer = myString[0 : i + len(pat)] 
+    
+    return answer
