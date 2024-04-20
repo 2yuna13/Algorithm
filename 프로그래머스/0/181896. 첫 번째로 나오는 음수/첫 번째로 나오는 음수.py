@@ -1,6 +1,6 @@
 def solution(num_list):
-    for num in num_list:
+    for i, num in enumerate(num_list):
         if num < 0:
-            return num_list.index(num)
+            return i
     
     return -1
