@@ -16,5 +16,3 @@ def solution(arr):
         else:
             answer += 1
             arr = next_arr
-        
-    return answer
