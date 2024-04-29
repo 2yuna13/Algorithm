@@ -1,9 +1,2 @@
-def solution(n):
-    answer = []
-    a = 1
-    
-    while a <= n:
-        answer.append(a)
-        a += 2
-        
-    return answer
+def solution(n):        
+    return list(range(1, n+1, 2))
