@@ -6,7 +6,6 @@
 # 오른쪽 0 그 오른쪽 / 아래 0 그 아래
 
 def check_distance(place):
-    
     for x in range(5):
         for y in range(5):
             if place[x][y] == 'P':
@@ -34,7 +33,7 @@ def check_distance(place):
                                 return 0 
                         elif dx == 2:
                             if place[x + 1][y] != 'X':
-                                return 0 
+                                return 0       
                             
     return 1
 
