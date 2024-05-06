@@ -1,8 +1,5 @@
 def solution(order):
     answer = 0
+    order = str(order)
     
-    for i in str(order):
-        if int(i) % 3 == 0 and i != '0':
-            answer += 1
-    
-    return answer
+    return order.count('3') + order.count('6') + order.count('9')
