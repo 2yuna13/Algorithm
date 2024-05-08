@@ -1,16 +1,15 @@
 def solution(s):
-    answer = ''
-    cnt = 0
+    answer = []  
+    words = s.split(" ")
     
-    for i in s:
-        if cnt % 2:
-            answer += i.lower()
-            cnt += 1
-        elif i == " ":
-            answer += " "
-            cnt = 0
-        else:
-            answer += i.upper()
-            cnt += 1
+    for word in words:
+        new_word = "" 
+        for i, v in enumerate(word):
+            if i % 2:
+                new_word += v.lower()
+            else:
+                new_word += v.upper()
+                
+        answer.append(new_word)
     
-    return answer
+    return " ".join(answer)
