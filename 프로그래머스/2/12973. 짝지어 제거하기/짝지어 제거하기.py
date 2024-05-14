@@ -1,10 +1,10 @@
 def solution(s):
     temp = []
 
-    for i, v in enumerate(s):
-        if temp and temp[-1] == v:
+    for i in s:
+        if temp and temp[-1] == i:
             temp.pop()
         else:
-            temp.append(v)
+            temp.append(i)
 
     return 1 if not temp else 0
