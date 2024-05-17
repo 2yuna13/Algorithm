@@ -11,9 +11,6 @@ def solution(n):
     
     # 뒤집고 10진법으로 표현
     for i, v in enumerate(nums[::-1]):
-        if i == 0:
-            answer += v
-        else:
-            answer += v * (3 ** i)
+        answer += v * (3 ** i)
     
     return answer
