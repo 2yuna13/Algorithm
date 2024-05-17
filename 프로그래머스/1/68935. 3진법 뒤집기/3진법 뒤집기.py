@@ -13,4 +13,8 @@ def solution(n):
     for i, v in enumerate(nums[::-1]):
         answer += v * (3 ** i)
     
+    # nums.reverse()
+    # for i in range(len(nums)):
+    #     answer += nums[i] * (3 ** i)
+    
     return answer
