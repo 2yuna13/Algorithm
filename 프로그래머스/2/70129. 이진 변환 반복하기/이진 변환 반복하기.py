@@ -6,14 +6,9 @@ def solution(s):
     cnt_2 = 0
     
     while s != '1':
-        x = ''
-        for i in s:
-            if i == '0':
-                cnt_2 += 1
-                continue
-            x += i
-
-        s = bin(len(x))[2:]
         cnt_1 += 1
+        x = s.count('1')
+        cnt_2 += len(s) - x
+        s = bin(x)[2:]
         
     return [cnt_1, cnt_2]
