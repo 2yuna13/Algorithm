@@ -1,10 +1,11 @@
-# 제한 사항 : 논문의 수 1,000 이하 / 인용 횟수 10,000회 이하
+# 논문 n ,h번 이상 인용된 논문이 h편 이상
 
 def solution(citations):
+    answer = 0
     citations.sort(reverse=True)
     
     for i in range(len(citations)):
         if citations[i] < i + 1:
             return i
-            
+        
     return len(citations)
