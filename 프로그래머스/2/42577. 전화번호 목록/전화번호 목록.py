@@ -1,9 +1,14 @@
 def solution(phone_book):
-    answer = True
-    phone_book.sort()
+    headers = {}
     
-    for i in range(len(phone_book) - 1):
-        if phone_book[i] == phone_book[i + 1][:len(phone_book[i])]:
-            return False
+    for phone_number in phone_book:
+        headers[phone_number] = 1
     
-    return answer
+    for phone_number in phone_book:
+        header = ''
+        for number in phone_number:
+            header += number
+            if header in headers and header != phone_number:
+                return False
+    
+    return True
