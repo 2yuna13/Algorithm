@@ -1,14 +1,3 @@
 def solution(lines):
-    answer = 0
-    count = [set([]) for _ in range(200)]
-    
-    for index, value in enumerate(lines):
-        a, b = value
-        for i in range(a, b):
-            count[i + 100].add(index)
-            
-    for line in count:
-        if len(line) > 1:
-            answer += 1
-    
-    return answer
+    sets = [set(range(min(l), max(l))) for l in lines]
+    return len(sets[0] & sets[1] | sets[0] & sets[2] | sets[1] & sets[2])
