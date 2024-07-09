@@ -10,7 +10,5 @@ def solution(dots):
         return 1
     if slope(x1, y1, x3, y3) == slope(x2, y2, x4, y4):
         return 1
-    if slope(x1, y1, x4, y4) == slope(x2, y2, x3, y3):
-        return 1
     
     return 0
