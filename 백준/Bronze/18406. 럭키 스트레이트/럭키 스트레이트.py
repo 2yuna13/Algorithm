@@ -1,15 +1,15 @@
 n = input()
 
-left, right = 0, 0
+sum = 0
 
-for i in range(0, len(n)//2):
-    left += int(n[i])
+for i in range(len(n)//2):
+    sum += int(n[i])
 
 for i in range(len(n)//2, len(n)):
-    right += int(n[i])
+    sum -= int(n[i])
 
 
-if left == right:
+if sum == 0:
     print("LUCKY")
 else:
     print("READY")
