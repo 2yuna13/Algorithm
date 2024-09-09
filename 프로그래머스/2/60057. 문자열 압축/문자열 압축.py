@@ -15,7 +15,7 @@ def solution(s):
             if comp == temp:
                 cnt += 1
             # 앞 뒤 다를 때 (압축 불가능)
-            elif comp != temp:
+            else:
                 comp_len += len(temp)
                 # 그 전에 압축한게 있다면 숫자(문자열 길이)만큼 추가
                 if cnt > 1:
