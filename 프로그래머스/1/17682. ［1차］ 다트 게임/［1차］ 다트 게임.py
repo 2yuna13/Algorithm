@@ -1,30 +1,37 @@
 def solution(dartResult):
-    answer = 0
-    
-    score = []
-    num = ''
+    score = 0
+    answer = []
+    dartResult = dartResult.replace("10", "t")
     
     for i in dartResult:
+        # 점수인지 확인
+        if i.isnumeric():
+            score += int(i)
+            continue
+        # 10점
+        elif i == 't': 
+            score += 10
+            continue
         # S, D(**2), T(***3)
-        if i == 'S':
-            score.append(int(num))
-            num = ''
+        elif i == 'S':
+            answer.append(score)
         elif i == 'D':
-            score.append(int(num) ** 2)
-            num = ''
+            answer.append(score ** 2)
         elif i == 'T':
-            score.append(int(num) ** 3)
-            num = ''
+            answer.append(score ** 3)
         # * => 계산식에서 * 2 / # => 점수 마이너스
         elif i == '*':
-            if len(score) == 1:
-                score[0] *= 2
+            # 한 판
+            if len(answer) == 1:
+                answer[0] *= 2
+            # 두 판
             else:
-                score[-1] *= 2
-                score[-2] *= 2
+                answer[-1] *= 2
+                answer[-2] *= 2
         elif i == '#':
-            score[-1] *= -1
-        else:
-            num += i
+            answer[-1] *= -1
+            
+        #점수 초기화
+        score = 0
         
-    return sum(score)
+    return sum(answer)
