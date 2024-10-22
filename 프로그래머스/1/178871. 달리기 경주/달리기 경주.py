@@ -1,16 +1,14 @@
 def solution(players, callings):
-    position = {}
+    position = {player : i for i, player in enumerate(players)}
     
-    for i, v in enumerate(players):
-        position[v] = i
-    
-    for call in callings:
-        current_position = position[call]
+    for c in callings:
+        current_position = position[c]
         
-        front_player = players[current_position - 1]
+        #딕셔너리 값 변경
+        position[c] -= 1
+        position[players[current_position - 1]] += 1
+        
+        #실제 값 변경
         players[current_position], players[current_position - 1] = players[current_position - 1], players[current_position]
-        
-        position[call] -= 1
-        position[front_player] += 1
         
     return players
