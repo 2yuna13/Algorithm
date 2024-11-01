@@ -1,12 +1,12 @@
+import re
+
 def solution(babbling):
     answer = 0
-    lst = ["aya", "ye", "woo", "ma"]
+    
+    pattern = re.compile('^(aya|ye|woo|ma)+$')
     
     for word in babbling:
-        for babble in lst:
-            word = word.replace(babble, " ")
-        
-        if word.strip() == "":
-            answer += 1      
+        if pattern.match(word):
+            answer += 1
         
     return answer
