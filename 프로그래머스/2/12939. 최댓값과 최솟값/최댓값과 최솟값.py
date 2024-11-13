@@ -1,4 +1,5 @@
 def solution(s):
     s = [int(i) for i in s.split(" ")]
+    s.sort()
     
-    return f'{min(s)} {max(s)}'
+    return str(s[0]) + " " + str(s[-1])
