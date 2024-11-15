@@ -1,11 +1,8 @@
 def solution(n):
-    answer = 0
-    num = 1
+    sqrt = n ** (1/2)
     
-    while answer < n:
-        answer = num ** 2
-        if answer == n:
-            return (num + 1) ** 2
-        num += 1
-        
+    if sqrt % 1 == 0:
+        return (sqrt + 1) ** 2
+    
     return -1
+    
