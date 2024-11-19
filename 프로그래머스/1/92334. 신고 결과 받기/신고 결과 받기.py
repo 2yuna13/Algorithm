@@ -1,21 +1,14 @@
 def solution(id_list, report, k):
     answer = [0] * len(id_list)
+    reports = {x: 0 for x in id_list}
     
-    # 동일한 유저에 대한 신고 1회로 처리
-    report = set(report)
+    # 신고당한 사람 카운트 
+    for r in set(report):
+        reports[r.split()[1]] += 1
     
-    # 신고당한 사람별 신고자 리스트
-    reported = {}
-    for i in report:
-        a, r = i.split()
-        if r not in reported:
-            reported[r] = []
-        reported[r].append(a)
-    
-    # k 이상일 경우 신고자들에게 메일 전송
-    for r, a in reported.items():
-        if len(a) >= k:
-            for j in a:
-                answer[id_list.index(j)] += 1
+    # k 이상일 경우 신고자들 카운트
+    for r in set(report):
+        if reports[r.split()[1]] >= k:
+            answer[id_list.index(r.split()[0])] += 1
         
     return answer
