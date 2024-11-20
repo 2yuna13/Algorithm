@@ -1,9 +1,5 @@
 def solution(sizes):
-    w = 0
-    h = 0
+    w = max(max(size) for size in sizes)
+    h = max(min(size) for size in sizes)
     
-    for size in sizes:
-        w = max(w, sorted(size)[0])
-        h = max(h, sorted(size)[1])
-        
     return w * h
