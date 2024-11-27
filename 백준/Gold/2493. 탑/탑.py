@@ -1,17 +1,16 @@
 n = int(input())
-height = list(map(int, input().split()))
+heights = list(map(int, input().split()))
 
-ans = [0] * n
 stack = []
+answer = [0] * n
 
 for i in range(n):
-    while stack and height[i] >= height[stack[-1]]:
+    while stack and heights[stack[-1]] < heights[i]:
         stack.pop()
-
+        
     if stack:
-        ans[i] = stack[-1] + 1
-
+        answer[i] = stack[-1] + 1
+        
     stack.append(i)
-
-# 결과 출력
-print(*ans)
+    
+print(*answer)
