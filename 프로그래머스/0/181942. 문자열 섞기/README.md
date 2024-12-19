@@ -1,10 +1,10 @@
 # [level 0] 문자열 섞기 - 181942 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181942) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181942?language=javascript) 
 
 ### 성능 요약
 
-메모리: 9.91 MB, 시간: 0.00 ms
+메모리: 33.5 MB, 시간: 0.07 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 04월 17일 14:20:23
+2024년 12월 19일 14:11:46
 
 ### 문제 설명
 
