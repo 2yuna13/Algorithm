@@ -1,23 +1,16 @@
 function solution(s) {
     var answer = '';
-    let cnt = 0;
     
-    for (let i of s) {
-        if (i == " ") {
-            answer += " ";
-            cnt = 0;
-            continue;
+    for (let word of s.split(" ")) {
+        for (let w in word) {
+            if (w % 2) {
+                answer += word[w].toLowerCase();
+            } else {
+                answer += word[w].toUpperCase();
+            }
         }
-        
-        if (cnt % 2) {
-            answer += i.toLowerCase();
-            cnt ++;
-        } else {
-            answer += i.toUpperCase();
-            cnt ++;
-        }
-
+        answer += " ";
     }
     
-    return answer;
+    return answer.slice(0, -1);
 }
