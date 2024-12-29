@@ -1,12 +1,15 @@
 function solution(food) {
     var answer = '';
-    let arr = [];
+    let temp = '';
     
     for (let i = 1; i < food.length; i++){
-        let n = Math.floor(food[i]/2)
-        arr.push(String(i).repeat(n));
+        let n = Math.floor(food[i] / 2);
+        if (n > 0) {
+            let repeatedIndex = String(i).repeat(n);
+            temp += repeatedIndex;
+            answer = repeatedIndex + answer;
+        }
     }
-    answer = arr.join('') + '0' +  arr.reverse().join('');
     
-    return answer
+    return temp + '0' + answer;
 }
