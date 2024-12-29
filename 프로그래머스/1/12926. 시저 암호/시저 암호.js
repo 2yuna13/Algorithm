@@ -1,23 +1,21 @@
 function solution(s, n) {
     var answer = '';
-    const codeA = 'A'.charCodeAt();
-    const codeZ = 'Z'.charCodeAt();
-    const codea = 'a'.charCodeAt();
-    const codez = 'z'.charCodeAt();
+    let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let lower = "abcdefghijklmnopqrstuvwxyz";
     
-    for (let i of s) {
-        let code = i.charCodeAt()
-        if (codeA <= code && code <= codeZ) {
-            let newCode = (code + n - codeA) % 26 + codeA;
-            answer += String.fromCharCode(newCode);
-        } else if (codea <= code && code <= codez){
-            let newCode = (code + n - codea) % 26 + codea;
-            answer += String.fromCharCode(newCode);
-        } else {
+    for (let i = 0; i < s.length; i++) {
+        let text = s[i];
+        if (text == ' ') {
             answer += ' ';
+            continue
         }
+        
+        let textArr = upper.includes(text) ? upper : lower;
+        let index = textArr.indexOf(text) + n;
+        if (index >= textArr.length) {
+            index -= textArr.length;
+        }
+        answer += textArr[index];
     }
     return answer;
 }
-
-// 반복문 안에서 아스키코드 + n // 근데 알파벳 넘어가지 않게 숫자 빼주기
