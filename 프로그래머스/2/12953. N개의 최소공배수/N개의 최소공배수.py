@@ -1,12 +1,8 @@
 import math
+from functools import reduce
 
-def lmc(a, b):
+def lcm(a, b):
     return a * b // math.gcd(a, b)
 
 def solution(arr):
-    answer = arr[0]
-    
-    for i in arr:
-        answer = lmc(answer, i)
-        
-    return answer
+    return reduce(lcm, arr)
