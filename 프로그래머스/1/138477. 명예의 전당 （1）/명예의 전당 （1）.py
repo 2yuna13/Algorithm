@@ -1,15 +1,15 @@
+import heapq
+
 def solution(k, score):
     answer = []
     temp = []
     
     for num in score:
-        temp.append(num)
-        temp.sort(reverse=True)
+        heapq.heappush(temp, num)
         
         if len(temp) > k:
-            temp.pop()
+            heapq.heappop(temp)
         
-        answer.append(min(temp))
-        
+        answer.append(temp[0])
         
     return answer
