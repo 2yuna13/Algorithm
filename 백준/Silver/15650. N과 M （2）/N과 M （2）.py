@@ -1,6 +1,11 @@
-from itertools import combinations
-
 n, m = map(int, input().split())
 
-for comb in combinations(range(1, n+1), m):
-    print(*comb)
+def dfs(start, path):
+    if len(path) == m:
+        print(*path)
+        return
+
+    for i in range(start, n + 1):
+        dfs(i + 1, path + [i])
+
+dfs(1, [])
