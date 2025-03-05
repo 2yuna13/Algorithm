@@ -1,5 +1,5 @@
 import sys
-input = sys.stdin.readline
+input = sys.stdin.readline 
 
 left = list(input().strip())
 right = []
@@ -17,5 +17,4 @@ for _ in range(n):
     elif command[0] == 'P':
         left.append(command[1])
 
-answer = left + right[::-1]
-print(''.join(answer))
+print(''.join(left) + ''.join(right[::-1]))
