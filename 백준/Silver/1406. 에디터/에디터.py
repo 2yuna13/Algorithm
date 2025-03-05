@@ -1,12 +1,12 @@
 import sys
-input = sys.stdin.readline 
+input = sys.stdin.readline
 
 left = list(input().strip())
 right = []
 
 n = int(input())
 for _ in range(n):
-    command = list(input().split())
+    command = input().split()
 
     if command[0] == 'L' and left:
         right.append(left.pop())
@@ -17,4 +17,5 @@ for _ in range(n):
     elif command[0] == 'P':
         left.append(command[1])
 
-print(''.join(left) + ''.join(right[::-1]))
+answer = left + right[::-1]
+print(''.join(answer))
